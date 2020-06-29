@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MyNews</string>
+    <string name="search_button">SEARCH</string>
+    <string name="menu_item">menu</string>
+    <string name="search_item">search</string>
+    <string name="notification_item">notification</string>
+    <string name="app_tittle">MyNews</string>
+    <string name="sub_item_help">help</string>
+    <string name="sub_item_about">about</string>
+    <string name="fragmentOne">fragment1</string>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_activity_main_search"
+        android:icon="@drawable/baseline_search_black_24_xxhdpi"
+        app:showAsAction="ifRoom"
+        android:title="@string/search_item">
+    </item>
+
+    <item
+        android:id="@+id/activity_main_menu_notification"
+        android:icon="@drawable/baseline_more_vert_black_24_xxhdpi"
+        app:showAsAction="ifRoom"
+        android:title="@string/notification_item">
+
+        <menu>
+            <item android:title="@string/notification_item"
+                android:id="@+id/subItem1"/>
+
+            <item android:title="@string/sub_item_about"
+                android:id="@+id/subItem2"/>
+
+            <item android:title="@string/sub_item_help"
+                android:id="@+id/subItem3"/>
+        </menu>
+
+    </item>
+</menu>
