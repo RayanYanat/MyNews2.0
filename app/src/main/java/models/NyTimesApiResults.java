@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class NyTimesApiResults {
-    @SerializedName("data")
+    @SerializedName("results")
     @Expose
     private List<TopStoriesArticles>results;
 

@@ -1,10 +1,13 @@
 package views;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -19,9 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controllers.NewsAdapter;
+import controllers.WebViewActivity;
 import models.NyTimesApiResults;
 import models.TopStoriesArticles;
 
+import utils.ItemClickSupport;
 import utils.TopStoriesCall;
 
 public class TabOne extends Fragment implements TopStoriesCall.Callbacks {
@@ -30,13 +35,16 @@ public class TabOne extends Fragment implements TopStoriesCall.Callbacks {
     private List<TopStoriesArticles> results;
     private NewsAdapter adapter;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         View view = inflater.inflate(R.layout.fragment_one, container, false);
         recyclerView = view.findViewById(R.id.MyRecyclerView);
         executeHttpRequestWithRetrofit();
         setUpRecyclerView();
+        onClickRecyclerView();
         return view;
     }
 
@@ -65,4 +73,24 @@ public class TabOne extends Fragment implements TopStoriesCall.Callbacks {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
+
+    private void onClickRecyclerView() {
+        ItemClickSupport.addTo(recyclerView, R.layout.news_item)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        Log.e("TAG", "Position : "+position);
+                        TopStoriesArticles result  = adapter.getUrl(position);
+                        openWebViewActivity(result.getUrl());
+
+                    }
+                });
+    }
+
+    private void openWebViewActivity(String url){
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+        intent.putExtra("",url);
+        startActivity(intent);
+    }
 }
+

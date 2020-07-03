@@ -1,14 +1,18 @@
 package controllers;
 
-import android.util.Log;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 
 import com.example.mynews.R;
 
@@ -16,14 +20,19 @@ import java.util.List;
 
 
 import models.TopStoriesArticles;
+import views.TabOne;
+
 
 public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHolder> {
 
     private List<TopStoriesArticles> mData;
 
+
+
     public NewsAdapter(List<TopStoriesArticles> data) {
 
         mData = data;
+
     }
 
     @NonNull
@@ -35,10 +44,14 @@ public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ImageViewHolder holder, int position) {
+
+
         TopStoriesArticles topSortiesItem =mData.get(position);
         holder.newsTittle.setText(topSortiesItem.getTitle());
         holder.newsDate.setText(topSortiesItem.getPublishedDate());
-        holder.newsArticle.setText(topSortiesItem.getSubsection());
+        holder.newsSection.setText(topSortiesItem.getSubsection());
+        Glide.with(holder.itemView.getContext()).load(topSortiesItem.getMultimedia()).into(holder.newsImage);
+
 
 
     }
@@ -59,16 +72,23 @@ public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHold
         ImageView newsImage;
         TextView newsTittle;
         TextView newsDate;
-        TextView newsArticle;
+        TextView newsSection;
 
         ImageViewHolder(View itemView) {
             super(itemView);
+
             newsImage = itemView.findViewById(R.id.news_item_image);
             newsTittle = itemView.findViewById(R.id.news_item_title);
             newsDate = itemView.findViewById(R.id.news_item_date);
-            newsArticle = itemView.findViewById(R.id.news_item_article);
+            newsSection = itemView.findViewById(R.id.news_item_section);
 
         }
 
     }
+
+    public TopStoriesArticles getUrl(int position){
+        List<TopStoriesArticles> result = mData;
+        return result.get(position);
+    }
+
 }

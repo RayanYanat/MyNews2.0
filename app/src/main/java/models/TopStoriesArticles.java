@@ -3,6 +3,8 @@ package models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class TopStoriesArticles {
 
     @SerializedName("section")
@@ -22,13 +24,13 @@ public class TopStoriesArticles {
     private String publishedDate;
     @SerializedName("multimedia")
     @Expose
-    private String urlImageMedia;
+    private List<Multimedia> urlImageMedia;
 
-    public String getUrlImageMedia() {
+    public List<Multimedia> getMultimedia() {
         return urlImageMedia;
     }
 
-    public TopStoriesArticles(String section, String subsection, String title, String url, String publishedDate,String urlImageMedia){
+    public TopStoriesArticles(String section, String subsection, String title, String url, String publishedDate,List<Multimedia> urlImageMedia){
         this.section = section;
         this.subsection = subsection;
         this.title = title;
