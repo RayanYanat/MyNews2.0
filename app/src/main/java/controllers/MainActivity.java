@@ -5,19 +5,27 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.mynews.R;
 import com.google.android.material.tabs.TabLayout;
 
+import views.SearchActivity;
+
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button searchBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        searchBtn=findViewById(R.id.menu_activity_main_search);
         this.configureToolbar();
 
         //Initializing viewPager
@@ -53,6 +61,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchActivity = new Intent(MainActivity.this, SearchActivity.class);
+                startActivity(searchActivity);
+            }
+        });
     }
 
     private void configureToolbar (){
@@ -64,5 +79,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main_activity,menu);
         return true;
+
     }
+
+
+
 }

@@ -1,11 +1,17 @@
 package utils;
 
+        import androidx.annotation.Nullable;
+
+        import java.util.List;
+
+        import io.reactivex.Observable;
         import models.NyTimesApiResults;
         import retrofit2.Call;
         import retrofit2.Retrofit;
         import retrofit2.converter.gson.GsonConverterFactory;
         import retrofit2.http.GET;
         import retrofit2.http.Path;
+        import retrofit2.http.Query;
 
 public interface NytimesService {
 

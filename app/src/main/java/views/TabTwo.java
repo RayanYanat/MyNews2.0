@@ -1,5 +1,6 @@
 package views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,8 +19,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import controllers.NewsAdapter;
+import controllers.WebViewActivity;
 import models.NyTimesApiResults;
 import models.TopStoriesArticles;
+import utils.ItemClickSupport;
 import utils.MostPopularCall;
 
 public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
@@ -35,6 +38,7 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
         recyclerView = view.findViewById(R.id.MyRecyclerView2);
         executeHttpRequestWithRetrofit();
         setUpRecyclerView();
+        onClickRecyclerView();
         return view;
     }
 
@@ -63,6 +67,23 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
         recyclerView.setAdapter(adapter);
     }
 
+    private void onClickRecyclerView() {
+        ItemClickSupport.addTo(recyclerView, R.layout.news_item)
+                .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
+                    @Override
+                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                        Log.e("TAG", "Position : "+position);
+                        TopStoriesArticles result  = adapter.getUrl(position);
+                        openWebViewActivity(result.getUrl());
 
+                    }
+                });
+    }
 
+    private void openWebViewActivity(String url){
+        Intent intent = new Intent(getActivity(), WebViewActivity.class);
+        intent.putExtra("URL",url);
+        startActivity(intent);
+    }
 }
+

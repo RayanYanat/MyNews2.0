@@ -20,7 +20,7 @@ import java.util.List;
 
 
 import models.TopStoriesArticles;
-import views.TabOne;
+
 
 
 public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHolder> {
@@ -50,7 +50,8 @@ public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHold
         holder.newsTittle.setText(topSortiesItem.getTitle());
         holder.newsDate.setText(topSortiesItem.getPublishedDate());
         holder.newsSection.setText(topSortiesItem.getSubsection());
-        Glide.with(holder.itemView.getContext()).load(topSortiesItem.getMultimedia()).into(holder.newsImage);
+        if (topSortiesItem.getMultimedia()!= null)
+        Glide.with(holder.itemView.getContext()).load(topSortiesItem.getMultimedia().get(0).getUrl()).into(holder.newsImage);
 
 
 

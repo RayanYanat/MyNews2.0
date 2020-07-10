@@ -89,7 +89,7 @@ public class TabOne extends Fragment implements TopStoriesCall.Callbacks {
 
     private void openWebViewActivity(String url){
         Intent intent = new Intent(getActivity(), WebViewActivity.class);
-        intent.putExtra("",url);
+        intent.putExtra("URL",url);
         startActivity(intent);
     }
 }
