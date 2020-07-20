@@ -1,5 +1,6 @@
 package controllers;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -8,12 +9,14 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.mynews.R;
 import com.google.android.material.tabs.TabLayout;
 
+import views.NotificationActivity;
 import views.SearchActivity;
 
 
@@ -25,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        searchBtn=findViewById(R.id.menu_activity_main_search);
         this.configureToolbar();
 
         //Initializing viewPager
@@ -61,27 +63,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        searchBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent searchActivity = new Intent(MainActivity.this, SearchActivity.class);
-                startActivity(searchActivity);
-            }
-        });
+
     }
 
-    private void configureToolbar (){
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId()==R.id.menu_activity_main_search) {
+            Intent searchActivity = new Intent(MainActivity.this, SearchActivity.class);
+            startActivity(searchActivity);
+        }
+        if(item.getItemId()==R.id.subItem1){
+            Intent notificationActivity = new Intent(MainActivity.this, NotificationActivity.class);
+            startActivity(notificationActivity);
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void configureToolbar() {
         Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
         setSupportActionBar(toolbar);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         return true;
 
     }
-
 
 
 }

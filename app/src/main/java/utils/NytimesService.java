@@ -4,7 +4,6 @@ package utils;
 
         import java.util.List;
 
-        import io.reactivex.Observable;
         import models.NyTimesApiResults;
         import retrofit2.Call;
         import retrofit2.Retrofit;
@@ -22,6 +21,9 @@ public interface NytimesService {
 
     @GET("mostpopular/v2/mostviewed/{section}/{time-period}.json?" + API_KEY)
     Call<NyTimesApiResults> getMostPopularNews(@Path("section") String section, @Path("time-period") String timePeriod);
+
+    @GET("search/v2/articlesearch.json?sort=newest&" + API_KEY)
+    Call<NyTimesApiResults> getSearchResult(@Query("q") String toSearch, @Nullable @Query("fq") List<String> filterQuery, @Nullable @Query("begin_date") String beginDate, @Nullable @Query("end_date") String endDate);
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/svc/")

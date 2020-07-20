@@ -21,6 +21,8 @@
         </activity>
         <activity android:name="controllers.WebViewActivity"/>
         <activity android:name="views.SearchActivity" />
+        <activity android:name="views.SearchActivityResult"/>
+        <activity android:name="views.NotificationActivity"/>
     </application>
 
 </manifest>
