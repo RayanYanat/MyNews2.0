@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    tools:ignore="ExtraText">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/tops_stories_news"
+            android:title="TopStories" />
+        <item
+            android:id="@+id/most_popular_news"
+            android:title="MostPopular"/>
+        <item
+            android:id="@+id/science_news"
+            android:title="Science"/>
+    </group>
+</menu>
