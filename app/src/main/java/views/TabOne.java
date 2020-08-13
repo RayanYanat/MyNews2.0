@@ -1,13 +1,11 @@
 package views;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 
 import androidx.annotation.NonNull;
@@ -21,10 +19,10 @@ import com.example.mynews.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.NewsAdapter;
+import controllers.adapters.NewsAdapter;
 import controllers.WebViewActivity;
-import models.NyTimesApiResults;
-import models.TopStoriesArticles;
+import models.topStories.NyTimesApiResults;
+import models.topStories.TopStoriesArticles;
 
 import utils.ItemClickSupport;
 import utils.TopStoriesCall;

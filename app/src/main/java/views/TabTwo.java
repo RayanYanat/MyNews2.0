@@ -18,18 +18,18 @@ import com.example.mynews.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.NewsAdapter;
+import controllers.adapters.MostPopularAdapter;
 import controllers.WebViewActivity;
-import models.NyTimesApiResults;
-import models.TopStoriesArticles;
+import models.mostPopular.MostPopulaArticles;
+import models.mostPopular.NyTimesMostPopularResults;
 import utils.ItemClickSupport;
 import utils.MostPopularCall;
 
 public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
 
     private RecyclerView recyclerView;
-    private List<TopStoriesArticles> results;
-    private NewsAdapter adapter;
+    private List<MostPopulaArticles> results;
+    private MostPopularAdapter adapter;
 
     @Nullable
     @Override
@@ -48,7 +48,7 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
     }
 
     @Override
-    public void onResponse(NyTimesApiResults topstories) {
+    public void onResponse(NyTimesMostPopularResults topstories) {
         Log.d("TAG", "Response = responseMostPopular");
         adapter.setResults(topstories.getResults());
 
@@ -62,7 +62,7 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
     private void setUpRecyclerView() {
         Log.d("TAG", "Response = recyclerMostPopular ");
         results = new ArrayList<>();
-        adapter = new NewsAdapter(results);
+        adapter = new MostPopularAdapter(results);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);
     }
@@ -73,7 +73,7 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position : "+position);
-                        TopStoriesArticles result  = adapter.getUrl(position);
+                        MostPopulaArticles result  = adapter.getUrl(position);
                         openWebViewActivity(result.getUrl());
 
                     }

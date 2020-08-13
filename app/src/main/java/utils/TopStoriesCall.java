@@ -4,7 +4,7 @@ import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
-import models.NyTimesApiResults;
+import models.topStories.NyTimesApiResults;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

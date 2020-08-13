@@ -4,12 +4,8 @@ package views;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,18 +16,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import controllers.NewsAdapter;
+import controllers.adapters.SearchAdapter;
 import controllers.WebViewActivity;
-import models.NyTimesApiResults;
-import models.TopStoriesArticles;
+import models.search.Doc;
+import models.search.NyTimesSearchResults;
 import utils.ItemClickSupport;
 import utils.SearchCall;
 
 public class SearchActivityResult extends AppCompatActivity implements SearchCall.Callbacks {
 
     private RecyclerView recyclerView;
-    private List<TopStoriesArticles> results;
-    private NewsAdapter adapter;
+    private List<Doc> results;
+    private SearchAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +40,11 @@ public class SearchActivityResult extends AppCompatActivity implements SearchCal
     }
 
     @Override
-    public void onResponse(NyTimesApiResults topstories) {
-        adapter.setResults(topstories.getResults());
+    public void onResponse(NyTimesSearchResults topstories) {
+        Log.d("TAG", "Response = responseSearch2");
+        adapter.setResults(topstories.getResponse().getDocs());
+        Log.e("TAG", "imageurl " + topstories.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
+
     }
 
     @Override
@@ -64,7 +63,7 @@ public class SearchActivityResult extends AppCompatActivity implements SearchCal
     private void setUpRecyclerView() {
         Log.d("TAG", "Response = recyclerSearch ");
         results = new ArrayList<>();
-        adapter = new NewsAdapter(results);
+        adapter = new SearchAdapter(results);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
     }
@@ -74,8 +73,8 @@ public class SearchActivityResult extends AppCompatActivity implements SearchCal
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
                         Log.e("TAG", "Position : "+position);
-                        TopStoriesArticles result  = adapter.getUrl(position);
-                        openWebViewActivity(result.getUrl());
+                        Doc result  = adapter.getUrl(position);
+                        openWebViewActivity(result.getWebUrl());
 
                     }
                 });

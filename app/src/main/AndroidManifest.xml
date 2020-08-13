@@ -23,6 +23,7 @@
         <activity android:name="views.SearchActivity" />
         <activity android:name="views.SearchActivityResult"/>
         <activity android:name="views.NotificationActivity"/>
+        <receiver android:name="utils.MyAlarm"/>
     </application>
 
 </manifest>

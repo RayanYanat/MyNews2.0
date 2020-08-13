@@ -1,10 +1,8 @@
 package utils;
 
-import android.util.Log;
-
 import java.lang.ref.WeakReference;
 
-import models.NyTimesApiResults;
+import models.mostPopular.NyTimesMostPopularResults;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -12,7 +10,7 @@ import retrofit2.Response;
 public class MostPopularCall {
 
     public interface Callbacks {
-        void onResponse(NyTimesApiResults topstories);
+        void onResponse(NyTimesMostPopularResults topstories);
 
         void onFailure();
     }
@@ -23,19 +21,19 @@ public class MostPopularCall {
 
         NytimesService nytimesService = NytimesService.retrofit.create(NytimesService.class);
 
-        Call<NyTimesApiResults> call = nytimesService.getMostPopularNews(section,timePeriod);
+        Call<NyTimesMostPopularResults> call = nytimesService.getMostPopularNews(section,timePeriod);
 
-        call.enqueue(new Callback<NyTimesApiResults>() {
+        call.enqueue(new Callback<NyTimesMostPopularResults>() {
 
             @Override
-            public void onResponse(Call<NyTimesApiResults> call, Response<NyTimesApiResults> response) {
+            public void onResponse(Call<NyTimesMostPopularResults> call, Response<NyTimesMostPopularResults> response) {
                 if (callbacksWeakReference.get() != null) callbacksWeakReference.get().onResponse(response.body());
             }
 
 
 
             @Override
-            public void onFailure(Call<NyTimesApiResults> call, Throwable t) {
+            public void onFailure(Call<NyTimesMostPopularResults> call, Throwable t) {
                 if (callbacksWeakReference.get() != null) callbacksWeakReference.get().onFailure();
             }
         });

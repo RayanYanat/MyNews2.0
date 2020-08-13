@@ -18,10 +18,10 @@ import com.example.mynews.R;
 import java.util.ArrayList;
 import java.util.List;
 
-import controllers.NewsAdapter;
+import controllers.adapters.NewsAdapter;
 import controllers.WebViewActivity;
-import models.NyTimesApiResults;
-import models.TopStoriesArticles;
+import models.topStories.NyTimesApiResults;
+import models.topStories.TopStoriesArticles;
 import utils.ItemClickSupport;
 import utils.TopStoriesCall;
 

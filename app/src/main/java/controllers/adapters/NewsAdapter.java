@@ -1,4 +1,4 @@
-package controllers;
+package controllers.adapters;
 
 
 import android.view.LayoutInflater;
@@ -19,7 +19,7 @@ import com.example.mynews.R;
 import java.util.List;
 
 
-import models.TopStoriesArticles;
+import models.topStories.TopStoriesArticles;
 
 
 

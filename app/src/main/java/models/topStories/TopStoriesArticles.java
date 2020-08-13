@@ -1,4 +1,4 @@
-package models;
+package models.topStories;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -52,7 +52,7 @@ public class TopStoriesArticles {
     }
 
     public String getUrl() {
-        return url;
+         return url;
     }
 
     public String getPublishedDate() {

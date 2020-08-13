@@ -4,7 +4,9 @@ package utils;
 
         import java.util.List;
 
-        import models.NyTimesApiResults;
+        import models.topStories.NyTimesApiResults;
+        import models.mostPopular.NyTimesMostPopularResults;
+        import models.search.NyTimesSearchResults;
         import retrofit2.Call;
         import retrofit2.Retrofit;
         import retrofit2.converter.gson.GsonConverterFactory;
@@ -20,10 +22,10 @@ public interface NytimesService {
     Call<NyTimesApiResults> getTopStoriesNews(@Path("section") String section);
 
     @GET("mostpopular/v2/mostviewed/{section}/{time-period}.json?" + API_KEY)
-    Call<NyTimesApiResults> getMostPopularNews(@Path("section") String section, @Path("time-period") String timePeriod);
+    Call<NyTimesMostPopularResults> getMostPopularNews(@Path("section") String section, @Path("time-period") String timePeriod);
 
     @GET("search/v2/articlesearch.json?sort=newest&" + API_KEY)
-    Call<NyTimesApiResults> getSearchResult(@Query("q") String toSearch, @Nullable @Query("fq") List<String> filterQuery, @Nullable @Query("begin_date") String beginDate, @Nullable @Query("end_date") String endDate);
+    Call<NyTimesSearchResults> getSearchResult(@Query("q") String toSearch, @Nullable @Query("fq") List<String> filterQuery, @Nullable @Query("begin_date") String beginDate, @Nullable @Query("end_date") String endDate);
 
     public static final Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/svc/")

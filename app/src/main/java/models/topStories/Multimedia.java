@@ -1,4 +1,4 @@
-package models;
+package models.topStories;
 
 
 import com.google.gson.annotations.SerializedName;

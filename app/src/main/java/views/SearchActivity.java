@@ -3,6 +3,7 @@ package views;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -90,6 +91,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
                     }, mYear, mMonth, mDay);
             datePickerDialog.show();
         } else if (v == mButtonSearch) {
+            Log.e("TAG", "ArrayList " + retrieveSelectedCheckbox());
+
             SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             String query = mSearchText.getText().toString();
             String beginDate = null;
@@ -102,9 +105,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            Log.e("TAG", "ArrayList " + query);
+
             if (!(query.equals(""))) {
+                Log.e("TAG", "ArrayList " + retrieveSelectedCheckbox());
                 if (!(retrieveSelectedCheckbox().isEmpty())) {
-                    //Log.e("TAG", "ArrayList " + retrieveSelectedCheckbox());
+                    Log.e("TAG", "ArrayList " + retrieveSelectedCheckbox());
                     Intent intent = new Intent(this, SearchActivityResult.class);
                     intent.putExtra(QUERY, query);
                     intent.putExtra(BEGIN_DATE, beginDate);
