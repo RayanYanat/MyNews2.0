@@ -4,8 +4,6 @@ import java.util.List;
 
 public class NotificationPreferences {
 
-    public static final String DEFAULT_QUERY_TERM = "";
-    public static final String DEFAULT_CATEGORY_LIST = "";
 
     private String queryTerm;
     private List<String> categoryList;

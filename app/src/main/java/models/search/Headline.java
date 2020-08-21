@@ -8,6 +8,10 @@ public class Headline {
     @Expose
     private String main;
 
+    public Headline(String main) {
+        this.main = main;
+    }
+
     public String getMain() {
         return main;
     }

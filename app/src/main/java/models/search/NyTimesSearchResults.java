@@ -8,6 +8,10 @@ public class NyTimesSearchResults {
     @Expose
     private Response response;
 
+    public NyTimesSearchResults(Response response) {
+        this.response = response;
+    }
+
     public Response getResponse() {
         return response;
     }

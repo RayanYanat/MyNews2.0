@@ -15,8 +15,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageButton;
+
 
 import com.example.mynews.R;
 import com.google.android.material.navigation.NavigationView;
@@ -29,19 +28,20 @@ import views.NotificationActivity;
 import views.SearchActivity;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener   {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
-    private NavigationView navigationView;
     private ViewPager viewPager;
-
+    private Toolbar toolbar;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.configureToolbar();
+        toolbar = findViewById(R.id.activity_main_toolbar);
+        setSupportActionBar(toolbar);
+        // this.configureToolbar();
         configureDrawerLayout();
         configureNavigationView();
         setUpAlarm();
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.addTab(tabLayout.newTab().setText(""));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        //Creating our pager adapter
+        // Creating our pager adapter
         PageAdapter pageadapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
 
         //Adding adapter to pager
@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(viewPager);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
             }
@@ -78,7 +77,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
             }
         });
-
 
 
     }
@@ -100,13 +98,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // 4 - Handle Navigation Item Click
         int id = item.getItemId();
 
-        switch (id){
-            case R.id.tops_stories_news :
+        switch (id) {
+            case R.id.tops_stories_news:
                 viewPager.setCurrentItem(0);
                 break;
             case R.id.most_popular_news:
+                viewPager.setCurrentItem(1);
                 break;
             case R.id.science_news:
+                viewPager.setCurrentItem(2);
                 break;
             default:
                 break;
@@ -114,19 +114,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    // 2 - Configure Drawer Layout
-    private void configureDrawerLayout(){
+    //  - Configure Drawer Layout
+    private void configureDrawerLayout() {
         this.drawerLayout = findViewById(R.id.activity_main_drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
     }
 
-    // 3 - Configure NavigationView
-    private void configureNavigationView(){
-        this.navigationView = findViewById(R.id.activity_main_nav_view);
+    // - Configure NavigationView
+    private void configureNavigationView() {
+        NavigationView navigationView = findViewById(R.id.activity_main_nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
+
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
@@ -138,15 +139,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent notificationActivity = new Intent(MainActivity.this, NotificationActivity.class);
             startActivity(notificationActivity);
         }
-        if (item.getItemId()==R.id.navigation_drawer_opener){
-        }
         return super.onOptionsItemSelected(item);
     }
 
-    private void configureToolbar() {
-        Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
-        setSupportActionBar(toolbar);
-    }
+    //private void configureToolbar() {
+    //     Toolbar toolbar = findViewById(R.id.activity_main_toolbar);
+    //    setSupportActionBar(toolbar);
+    // }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -156,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setUpAlarm() {
-        // The alarm is set to be launch at midnight
+        // The alarm is set to be launch at midi
         Calendar calendar = Calendar.getInstance();
         calendar.set(Calendar.HOUR_OF_DAY, 12);
         calendar.set(Calendar.MINUTE, 0);

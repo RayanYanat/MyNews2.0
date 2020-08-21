@@ -1,6 +1,7 @@
 package utils;
 
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -69,7 +70,7 @@ public class MyAlarm extends BroadcastReceiver implements SearchCall.Callbacks {
 
 
     private String DateOfTheDay(){
-        DateFormat df = new SimpleDateFormat("yyyyMMdd");
+        @SuppressLint("SimpleDateFormat") DateFormat df = new SimpleDateFormat("yyyyMMdd");
         return df.format(Calendar.getInstance().getTime());
     }
 
@@ -83,7 +84,9 @@ public class MyAlarm extends BroadcastReceiver implements SearchCall.Callbacks {
                     "NOTIFICATION_CHANNEL",
                     NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("YOUR_NOTIFICATION_CHANNEL_DESCRIPTION");
-            notificationManager.createNotificationChannel(channel);
+            if (notificationManager != null) {
+                notificationManager.createNotificationChannel(channel);
+            }
         }
 
 
@@ -96,11 +99,15 @@ public class MyAlarm extends BroadcastReceiver implements SearchCall.Callbacks {
         NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(
                 mContext,"CHANNEL_ID")
                 .setContentTitle("MyNews")
-                .setContentText("Articles that may interest you!" + intResults + "articles find" )
+                .setContentText("Articles that may interest you!" + intResults + " articles find" )
                 .setSmallIcon(R.drawable.baseline_menu_black_24)
                 .setContentIntent(pendingIntent)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-        notificationManager.notify(1, mNotifyBuilder.build());
+        if (notificationManager != null) {
+            notificationManager.notify(1, mNotifyBuilder.build());
+        }
+
+        Log.e("notifiedArticles",topstories.getResponse().getDocs().get(0).getWebUrl());
 
     }
 

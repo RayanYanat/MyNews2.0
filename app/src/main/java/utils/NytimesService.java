@@ -27,7 +27,7 @@ public interface NytimesService {
     @GET("search/v2/articlesearch.json?sort=newest&" + API_KEY)
     Call<NyTimesSearchResults> getSearchResult(@Query("q") String toSearch, @Nullable @Query("fq") List<String> filterQuery, @Nullable @Query("begin_date") String beginDate, @Nullable @Query("end_date") String endDate);
 
-    public static final Retrofit retrofit = new Retrofit.Builder()
+    Retrofit retrofit = new Retrofit.Builder()
             .baseUrl("https://api.nytimes.com/svc/")
             .addConverterFactory(GsonConverterFactory.create())
             .build() ;

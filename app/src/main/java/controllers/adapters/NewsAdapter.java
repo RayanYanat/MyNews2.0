@@ -1,6 +1,7 @@
 package controllers.adapters;
 
 
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,6 @@ public class  NewsAdapter extends RecyclerView.Adapter<NewsAdapter.ImageViewHold
         holder.newsSection.setText(topSortiesItem.getSubsection());
         if (topSortiesItem.getMultimedia()!= null)
         Glide.with(holder.itemView.getContext()).load(topSortiesItem.getMultimedia().get(0).getUrl()).into(holder.newsImage);
-
 
 
     }

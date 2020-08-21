@@ -2,6 +2,7 @@ package controllers;
 
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -14,10 +15,10 @@ import views.TabTwo;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
-    String tittle [] = {"TOP STORIES","MOST POPULAR","SCIENCE"};
-    int tabCount;
+    private String tittle [] = {"TOP STORIES","MOST POPULAR","SCIENCE"};
+    private int tabCount;
 
-    public PageAdapter( FragmentManager fm, int tabCount) {
+    PageAdapter(FragmentManager fm, int tabCount) {
         super(fm);
         this.tabCount = tabCount;
     }
@@ -28,18 +29,16 @@ public class PageAdapter extends FragmentPagerAdapter {
         return tittle[position];
     }
 
+    @NonNull
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                TabOne tab1 = new TabOne();
-                return tab1;
+                return new TabOne();
             case 1:
-                TabTwo tab2 = new TabTwo();
-                return tab2;
+                return new TabTwo();
             case 2:
-                TabThree tab3 = new TabThree();
-                return tab3;
+                return new TabThree();
             default:
                 return null;
 

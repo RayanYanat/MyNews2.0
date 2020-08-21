@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/linearLayout_search_date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -7,6 +8,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
+        android:id="@+id/linearLayout_beginDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -17,6 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="begin_date"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -29,6 +32,7 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/linearLayout_endDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -36,9 +40,11 @@
         >
 
         <TextView
+            android:id="@+id/endDate_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="end_date"/>
+
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
