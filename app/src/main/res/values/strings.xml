@@ -10,4 +10,18 @@
     <string name="fragmentOne">fragment1</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="todo">TODO</string>
+    <string name="search">search</string>
+    <string name="arts">arts</string>
+    <string name="business">business</string>
+    <string name="politics">politics</string>
+    <string name="sports">sports</string>
+    <string name="travel">travel</string>
+    <string name="begin_date">begin_date</string>
+    <string name="end_date">end_date</string>
+    <string name="search_query_terms">Search query terms</string>
+    <string name="article_illustration">Article illustration</string>
+    <string name="tittle">tittle</string>
+    <string name="_17_04_2020">17/04/2020</string>
+    <string name="enable_notification_once_per_day">enable notification (once per day)</string>
 </resources>

@@ -15,7 +15,7 @@ import views.TabTwo;
 
 public class PageAdapter extends FragmentPagerAdapter {
 
-    private String tittle [] = {"TOP STORIES","MOST POPULAR","SCIENCE"};
+    private String[] tittle = {"TOP STORIES","MOST POPULAR","SCIENCE"};
     private int tabCount;
 
     PageAdapter(FragmentManager fm, int tabCount) {

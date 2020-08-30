@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:baselineAligned="false"
     android:id="@+id/linearLayout_search_date"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -18,17 +20,18 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="begin_date"/>
+            android:text="@string/begin_date"/>
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/search_begin_date"
             android:clickable="true"
-            android:focusable="false"
+            android:focusable="true"
             android:inputType="date"
             android:layout_marginBottom="10dp"
-            />
+            tools:ignore="LabelFor"
+            android:autofillHints="" />
 
     </LinearLayout>
     <LinearLayout
@@ -43,7 +46,7 @@
             android:id="@+id/endDate_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="end_date"/>
+            android:text="@string/end_date"/>
 
         <EditText
             android:layout_width="match_parent"
@@ -52,7 +55,9 @@
             android:clickable="false"
             android:focusable="true"
             android:inputType="date"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:autofillHints=""
+            tools:ignore="LabelFor" />
 
     </LinearLayout>
 </LinearLayout>

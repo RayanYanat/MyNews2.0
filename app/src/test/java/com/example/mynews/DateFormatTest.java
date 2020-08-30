@@ -3,9 +3,11 @@ package com.example.mynews;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.text.SimpleDateFormat;
+
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.Date;
+
+import utils.GetDate;
 
 public class DateFormatTest {
 
@@ -14,14 +16,13 @@ public class DateFormatTest {
         String expectedEndDate = "17/08/2020";
 
         Calendar calendar = Calendar.getInstance();
+        calendar.clear();
         calendar.set(Calendar.YEAR, 2020);
-        calendar.set(Calendar.MONTH, 07);
+        calendar.set(Calendar.MONTH, 7);
         calendar.set(Calendar.DAY_OF_MONTH, 17);
-        String mFormat = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mFormat, Locale.FRANCE);
-        String actualEndDate = simpleDateFormat.format(calendar.getTime());
+        Date actualEndDate = GetDate.getDateParse(expectedEndDate);
 
-        Assert.assertEquals(expectedEndDate, actualEndDate);
+        Assert.assertEquals(calendar.getTimeInMillis(), actualEndDate.getTime());
     }
 
     @Test
@@ -29,13 +30,12 @@ public class DateFormatTest {
         String expectedBeginDate = "30/07/2020";
 
         Calendar calendar = Calendar.getInstance();
+        calendar.clear();
         calendar.set(Calendar.YEAR, 2020);
-        calendar.set(Calendar.MONTH, 06);
+        calendar.set(Calendar.MONTH, 6);
         calendar.set(Calendar.DAY_OF_MONTH, 30);
-        String mFormat = "dd/MM/yyyy";
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(mFormat, Locale.FRANCE);
-        String actualBeginDate = simpleDateFormat.format(calendar.getTime());
+        Date actualBeginDate = GetDate.getDateParse(expectedBeginDate);
 
-        Assert.assertEquals(expectedBeginDate, actualBeginDate);
+        Assert.assertEquals(calendar.getTimeInMillis(), actualBeginDate.getTime());
     }
 }

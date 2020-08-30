@@ -29,7 +29,6 @@ public class NotificationActivity extends AppCompatActivity {
     EditText mSearchQuery;
     public static final String PREFS = "PREFS";
     public static final String NOTIFICATIONS_STATE = "NOTIFICATIONS_STATE";
-    private SharedPreferences mPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class NotificationActivity extends AppCompatActivity {
 
 
     private void saveNotificationsPreferences(String queryTerm, List<String> categoryList, boolean isEnabled){
-        mPreferences = getBaseContext().getSharedPreferences(PREFS,MODE_PRIVATE);
+        SharedPreferences mPreferences = getBaseContext().getSharedPreferences(PREFS, MODE_PRIVATE);
         Gson gson = new Gson();
         NotificationPreferences notifPrefs = new NotificationPreferences(queryTerm,categoryList, isEnabled);
         String jsonNotifPrefs = gson.toJson(notifPrefs);

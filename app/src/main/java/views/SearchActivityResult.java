@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -26,7 +27,6 @@ import utils.SearchCall;
 public class SearchActivityResult extends AppCompatActivity implements SearchCall.Callbacks {
 
     private RecyclerView recyclerView;
-    private List<Doc> results;
     private SearchAdapter adapter;
 
     @Override
@@ -41,11 +41,14 @@ public class SearchActivityResult extends AppCompatActivity implements SearchCal
 
     @Override
     public void onResponse(NyTimesSearchResults topstories) {
-        Log.d("TAG", "Response = responseSearch2");
-        adapter.setResults(topstories.getResponse().getDocs());
-        Log.e("TAG", "imageurl " + topstories.getResponse().getDocs().get(0).getMultimedia().get(0).getUrl());
-
-    }
+        if(!topstories.getResponse().getDocs().isEmpty()){
+            Log.d("TAG", "Response = responseSearch2");
+            adapter.setResults(topstories.getResponse().getDocs());
+        }
+        else {
+            Toast.makeText(this, "no article found", Toast.LENGTH_SHORT).show();
+        }
+        }
 
     @Override
     public void onFailure() {
@@ -62,7 +65,7 @@ public class SearchActivityResult extends AppCompatActivity implements SearchCal
     }
     private void setUpRecyclerView() {
         Log.d("TAG", "Response = recyclerSearch ");
-        results = new ArrayList<>();
+        List<Doc> results = new ArrayList<>();
         adapter = new SearchAdapter(results);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);

@@ -28,7 +28,6 @@ import utils.MostPopularCall;
 public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
 
     private RecyclerView recyclerView;
-    private List<MostPopulaArticles> results;
     private MostPopularAdapter adapter;
 
     @Nullable
@@ -61,7 +60,7 @@ public class TabTwo extends Fragment implements MostPopularCall.Callbacks {
 
     private void setUpRecyclerView() {
         Log.d("TAG", "Response = recyclerMostPopular ");
-        results = new ArrayList<>();
+        List<MostPopulaArticles> results = new ArrayList<>();
         adapter = new MostPopularAdapter(results);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);

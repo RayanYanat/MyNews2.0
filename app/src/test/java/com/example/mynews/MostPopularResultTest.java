@@ -6,16 +6,16 @@ import java.util.List;
 
 import models.mostPopular.Medium;
 import models.mostPopular.MostPopulaArticles;
-import models.topStories.TopStoriesArticles;
+
 
 import static junit.framework.Assert.assertEquals;
 
 public class MostPopularResultTest {
 
-    List<Medium> urlImageMedia;
+     List<Medium> urlImageMedia;
 
     @Test
-    public void GetMostPopularTest() throws Exception {
+    public void GetMostPopularTest() {
         MostPopulaArticles result = new MostPopulaArticles ("testSection","testSubSection","testTitle","testUrl","testPublishedDate",urlImageMedia);
 
         assertEquals("testSection", result.getSection());

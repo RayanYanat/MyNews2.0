@@ -1,5 +1,6 @@
 package controllers;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -20,6 +21,7 @@ public class WebViewActivity extends AppCompatActivity {
         displayWebview();
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private void displayWebview(){
         String url = getIntent().getStringExtra("URL");
         webView.getSettings().setJavaScriptEnabled(true);

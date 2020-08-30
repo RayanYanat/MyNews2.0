@@ -1,5 +1,6 @@
 package views;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,7 +25,10 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import utils.GetDate;
 
+
+@SuppressWarnings("deprecation")
 public class SearchActivity extends AppCompatActivity implements View.OnClickListener {
     EditText mBeginDate;
     EditText mEndDate;
@@ -36,8 +40,6 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     public static String FILTER_QUERY = "FILTER_QUERY";
     public static String BEGIN_DATE = "BEGIN_DATE";
     public static String END_DATE = "END_DATE";
-
-    private int mYear, mMonth, mDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +56,9 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     public void onClick(View v) {
         final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        int mYear;
+        int mMonth;
+        int mDay;
         if (v == mBeginDate) {
             final Calendar c = Calendar.getInstance();
             mYear = c.get(Calendar.YEAR);
@@ -93,14 +98,16 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         } else if (v == mButtonSearch) {
             Log.e("TAG", "ArrayList " + retrieveSelectedCheckbox());
 
-            SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat("yyyyMMdd");
             String query = mSearchText.getText().toString();
             String beginDate = null;
             String endDate = null;
             try {
-                Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(mBeginDate.getText().toString());
-                Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(mEndDate.getText().toString());
+                @SuppressLint("SimpleDateFormat") Date d1 = GetDate.getDateParse(mBeginDate.getText().toString());
+                @SuppressLint("SimpleDateFormat") Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(mEndDate.getText().toString());
+                assert d1 != null;
                 beginDate = mSimpleDateFormat.format(d1);
+                assert d2 != null;
                 endDate = mSimpleDateFormat.format(d2);
             } catch (ParseException e) {
                 e.printStackTrace();

@@ -1,5 +1,7 @@
 package utils;
 
+import androidx.annotation.NonNull;
+
 import java.lang.ref.WeakReference;
 
 import models.mostPopular.NyTimesMostPopularResults;
@@ -26,14 +28,14 @@ public class MostPopularCall {
         call.enqueue(new Callback<NyTimesMostPopularResults>() {
 
             @Override
-            public void onResponse(Call<NyTimesMostPopularResults> call, Response<NyTimesMostPopularResults> response) {
+            public void onResponse(@NonNull Call<NyTimesMostPopularResults> call, @NonNull Response<NyTimesMostPopularResults> response) {
                 if (callbacksWeakReference.get() != null) callbacksWeakReference.get().onResponse(response.body());
             }
 
 
 
             @Override
-            public void onFailure(Call<NyTimesMostPopularResults> call, Throwable t) {
+            public void onFailure(@NonNull Call<NyTimesMostPopularResults> call, @NonNull Throwable t) {
                 if (callbacksWeakReference.get() != null) callbacksWeakReference.get().onFailure();
             }
         });

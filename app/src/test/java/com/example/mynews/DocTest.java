@@ -9,7 +9,7 @@ import static junit.framework.Assert.assertEquals;
 public class DocTest {
 
     @Test
-    public void GetDocTest() throws Exception {
+    public void GetDocTest() {
         Doc doc = new Doc("testWebURL",null,"testPubDate","testSectionName","testSubSectionName");
 
         assertEquals("testWebURL", doc.getWebUrl());

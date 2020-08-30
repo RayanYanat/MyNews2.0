@@ -28,7 +28,6 @@ import utils.TopStoriesCall;
 public class TabThree extends Fragment implements TopStoriesCall.Callbacks {
 
     private RecyclerView recyclerView;
-    private List<TopStoriesArticles> results;
     private NewsAdapter adapter;
 
     @Nullable
@@ -60,7 +59,7 @@ public class TabThree extends Fragment implements TopStoriesCall.Callbacks {
 
     private void setUpRecyclerView() {
         Log.d("TAG", "Response = TopStoriesScienceRecycler ");
-        results = new ArrayList<>();
+        List<TopStoriesArticles> results = new ArrayList<>();
         adapter = new NewsAdapter(results);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setAdapter(adapter);

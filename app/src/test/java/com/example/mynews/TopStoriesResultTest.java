@@ -15,7 +15,7 @@ public class TopStoriesResultTest {
     List<Multimedia> urlImageMedia;
 
     @Test
-    public void GetTopStoriesTest() throws Exception {
+    public void GetTopStoriesTest() {
         TopStoriesArticles result = new TopStoriesArticles ("testSection","testSubSection","testTitle","testUrl","testPublishedDate",urlImageMedia);
 
         assertEquals("testSection", result.getSection());

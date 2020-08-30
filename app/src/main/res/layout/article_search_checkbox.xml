@@ -20,7 +20,7 @@
             android:id="@+id/search_articles_arts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="arts"
+            android:text="@string/arts"
             android:tag="arts"
             />
 
@@ -28,7 +28,7 @@
             android:id="@+id/search_articles_business"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="business"
+            android:text="@string/business"
             android:tag="business"
             />
 
@@ -46,7 +46,7 @@
             android:id="@+id/search_articles_politics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="politics"
+            android:text="@string/politics"
             android:tag="politics"
             />
 
@@ -54,7 +54,7 @@
             android:id="@+id/search_articles_sports"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sports"
+            android:text="@string/sports"
             android:tag="sports"
             />
 
@@ -62,7 +62,7 @@
             android:id="@+id/search_articles_travel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="travel"
+            android:text="@string/travel"
             android:tag="travel"
             />
 
