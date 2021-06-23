@@ -5,11 +5,10 @@ Il est donc possible de consulter directement les articles dans l’application,
 
 # Aperçu
 
-![Imgur](https://i.imgur.com/fZSRjca.png)
-![Imgur](https://i.imgur.com/hgXdpJN.png)
-![Imgur](https://i.imgur.com/6CAERxp.png)
 ![Imgur](https://i.imgur.com/TA8vlWl.png)
-![Imgur](https://i.imgur.com/olcOiB7.png)
+![Imgur](https://i.imgur.com/6CAERxp.png)
+![Imgur](https://i.imgur.com/hgXdpJN.png)
+![Imgur](https://i.imgur.com/fZSRjca.png)
 ![Imgur](https://i.imgur.com/S3ADiq1.png)
 
 #Compétences
